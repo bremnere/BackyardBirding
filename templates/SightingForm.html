@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Record Bird Sighting</title>
+</head>
+<body>
+    <h1>Record a New Bird Sighting</h1>
+    <form action="{{ url_for('submit_sighting') }}" method="post">
+        <label for="species">Species:</label>
+        <input type="text" id="species" name="species" required><br><br>
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" required><br><br>
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required><br><br>
+        <label for="time">Time:</label>
+        <input type="time" id="time" name="time" required><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
