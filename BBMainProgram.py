@@ -12,6 +12,7 @@ def index():
         <body>
             <h1>Welcome to the Birding App!</h1>
             <p><a href="/sighting">Record a new bird sighting</a></p>
+            <p><a href="/about">About This App</a></p>
         </body>
     </html>
     """
@@ -35,6 +36,10 @@ def submit_sighting():
         return redirect(url_for('index'))
     except KeyError as e:
         return "Error: Missing Data", 400
+
+@app.route('/about')
+def about():
+    return render_template('About.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

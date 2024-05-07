@@ -3,10 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Record Bird Sighting</title>
+    <script>
+        function confirmSubmission() {
+            var confirmResult = confirm("Ready to save?");
+            return confirmResult;  // will return true if 'OK' is clicked, and false if 'Cancel' is clicked
+        }
+
+        function confirmCancellation() {
+            var confirmResult = confirm("Are you sure? All data will be lost.");
+            if (confirmResult) {
+                window.location.href = '/'; // Redirect to the home page
+            }
+            return false; // Prevent default form submission behavior
+        }
+    </script>
 </head>
 <body>
     <h1>Record a New Bird Sighting</h1>
-    <form action="{{ url_for('submit_sighting') }}" method="post">
+    <form action="{{ url_for('submit_sighting') }}" method="post" onsubmit="return confirmSubmission();">
         <label for="species">Species:</label>
         <input type="text" id="species" name="species" required><br><br>
         <label for="location">Location:</label>
@@ -16,6 +30,8 @@
         <label for="time">Time:</label>
         <input type="time" id="time" name="time" required><br><br>
         <input type="submit" value="Submit">
+        <button type="button" onclick="confirmCancellation();">Cancel</button>
     </form>
+    <p><a href="/">Return Home</a></p>
 </body>
 </html>
